@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+	<script type='text/javascript'>
+    function GetMap() {
+        var map = new Microsoft.Maps.Map('#myMap', {
+            credentials: 'Avo3tnMUdQ8RNM3r5O38hEmtbeoPDa_lMFpu4uAYYFd_d7vZhYi5rlI7IvT3CqG2'
+        });
+
+        //Request the user's location
+        navigator.geolocation.getCurrentPosition(function (position) {
+            var loc = new Microsoft.Maps.Location(
+                position.coords.latitude,
+                position.coords.longitude);
+
+            //Add a pushpin at the user's location.
+            var pin = new Microsoft.Maps.Pushpin(loc);
+            map.entities.push(pin);
+
+            //Center the map on the user's location.
+            map.setView({ center: loc, zoom: 15 });
+        });
+    }
+    </script>
+    <script type='text/javascript' src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap' async defer></script>
+    <style>
+.banner{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{  
+    margin: auto 3rem;
+    color: rgb(10, 9, 9);
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+nav ul li{
+    display: inline-block;
+    list-style: : none;
+    margin: 2rem;
+    position: relative;
+    font-size: 20px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color:  #ef1111;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+nav ul li a::after{
+    content: '';
+    height: 3px;
+    width: 0%;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    background-color: #fff;
+    transition: 0.6s ease-out;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+}
+        footer{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="logo">Personal Portfolio</div>
+                    <nav>
+                        <ul>
+                            <li><a href="homepage.html"><i class="fa-solid fa-house-chimney"></i> Home</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="registration.html"><i class="fa-solid fa-address-card"></i> Registration Form</a></li>
+                            <li><a href="heroes.html">Feedback</a></li>
+                            <li><a href="parallex.html">Contact Details</a></li>
+                            <li><a href="geolocation.html">My Location</a></li>
+                        </ul>
+                    </nav>
+                </div>
+    <div id="myMap" style="position:relative;width:1500px;height:650px;"></div>
+
+    <footer>
+        <p>Design and Developed by Shreya Goel</p>
+    </footer>
+</body>
+</html>
